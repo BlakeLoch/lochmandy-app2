@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<!--
+  ~ UCF COP3330 Fall 2021 Application Assignment 2 Solution
+  ~ Copyright 2021 Blake Lochmandy
+  -->
+
+<AnchorPane prefHeight="450.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ApplicationController">
+   <children>
+      <TableView fx:id="dataTable" layoutX="10.0" layoutY="100.0" prefHeight="340.0" prefWidth="750.0">
+        <columns>
+          <TableColumn fx:id="serialNoColumn" prefWidth="150.0" text="Serial No." />
+          <TableColumn fx:id="nameColumn" prefWidth="450.0" text="Name" />
+            <TableColumn fx:id="valueColumn" prefWidth="120.0" text="Value" />
+            <TableColumn fx:id="removeColumn" prefWidth="30.0" sortable="false" text=" X" />
+        </columns>
+      </TableView>
+      <Label fx:id="errorMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="81.0" prefHeight="19.0" prefWidth="128.0" text="ERROR MESSAGE" textAlignment="CENTER" textFill="RED" visible="false" />
+      <HBox fx:id="addBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
+         <children>
+            <Label text="Name" />
+            <TextField fx:id="addName" prefHeight="26.0" prefWidth="250.0" promptText="2-256" />
+            <Label text="Serial No." />
+            <TextField fx:id="addSerialNo" prefHeight="26.0" prefWidth="116.0" promptText="A-XXX-XXX-XXX" />
+            <Label text="Value" />
+            <TextField fx:id="addValue" prefHeight="26.0" prefWidth="142.0" promptText="($) USD" />
+            <Button fx:id="addConfirm" mnemonicParsing="false" text="Confirm" />
+         </children>
+      </HBox>
+      <HBox fx:id="editBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
+         <children>
+            <Label text="Name" />
+            <TextField fx:id="editName" prefHeight="26.0" prefWidth="250.0" promptText="2-256" />
+            <Label text="Serial No." />
+            <TextField fx:id="editSerialNo" prefHeight="26.0" prefWidth="116.0" promptText="A-XXX-XXX-XXX" />
+            <Label text="Value" />
+            <TextField fx:id="editValue" prefHeight="26.0" prefWidth="142.0" promptText="($) USD" />
+            <Button fx:id="editConfirm" mnemonicParsing="false" text="Confirm" />
+         </children>
+      </HBox>
+      <HBox fx:id="searchBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
+         <children>
+            <Label text="Name" />
+            <TextField fx:id="searchName" prefHeight="26.0" prefWidth="381.0" promptText="2-256" />
+            <Label text="Serial No." />
+            <TextField fx:id="searchSerialNo" prefHeight="26.0" prefWidth="178.0" promptText="A-XXX-XXX-XXX" />
+            <Button fx:id="searchConfirm" mnemonicParsing="false" text="Confirm" />
+         </children>
+      </HBox>
+      <HBox fx:id="menuBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0">
+         <children>
+            <Button fx:id="addItem" mnemonicParsing="false" text="Add" />
+            <Button fx:id="editItem" mnemonicParsing="false" text="Edit" />
+            <Button fx:id="clearItems" mnemonicParsing="false" text="Clear" />
+            <Button fx:id="searchItems" mnemonicParsing="false" text="Search" />
+            <Button fx:id="saveItems" mnemonicParsing="false" text="Save" />
+            <Button fx:id="loadItems" mnemonicParsing="false" text="Load" />
+         </children>
+      </HBox>
+      <Label alignment="CENTER" layoutX="234.0" layoutY="12.0" prefHeight="33.0" prefWidth="276.0" text="INVENTORY MANAGER" textAlignment="CENTER">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
