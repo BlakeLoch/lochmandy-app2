@@ -18,7 +18,7 @@
    <children>
       <TableView fx:id="dataTable" layoutX="10.0" layoutY="100.0" prefHeight="340.0" prefWidth="750.0">
         <columns>
-          <TableColumn fx:id="serialNoColumn" prefWidth="150.0" text="Serial No." />
+          <TableColumn fx:id="serialNumberColumn" prefWidth="150.0" text="Serial No." />
           <TableColumn fx:id="nameColumn" prefWidth="450.0" text="Name" />
             <TableColumn fx:id="valueColumn" prefWidth="120.0" text="Value" />
             <TableColumn fx:id="removeColumn" prefWidth="30.0" sortable="false" text=" X" />
@@ -30,7 +30,7 @@
             <Label text="Name" />
             <TextField fx:id="addName" prefHeight="26.0" prefWidth="250.0" promptText="2-256" />
             <Label text="Serial No." />
-            <TextField fx:id="addSerialNo" prefHeight="26.0" prefWidth="116.0" promptText="A-XXX-XXX-XXX" />
+            <TextField fx:id="addSerialNumber" prefHeight="26.0" prefWidth="116.0" promptText="A-XXX-XXX-XXX" />
             <Label text="Value" />
             <TextField fx:id="addValue" prefHeight="26.0" prefWidth="142.0" promptText="($) USD" />
             <Button fx:id="addConfirm" mnemonicParsing="false" text="Confirm" />
@@ -41,22 +41,32 @@
             <Label text="Name" />
             <TextField fx:id="editName" prefHeight="26.0" prefWidth="250.0" promptText="2-256" />
             <Label text="Serial No." />
-            <TextField fx:id="editSerialNo" prefHeight="26.0" prefWidth="116.0" promptText="A-XXX-XXX-XXX" />
+            <TextField fx:id="editSerialNumber" prefHeight="26.0" prefWidth="116.0" promptText="A-XXX-XXX-XXX" />
             <Label text="Value" />
             <TextField fx:id="editValue" prefHeight="26.0" prefWidth="142.0" promptText="($) USD" />
             <Button fx:id="editConfirm" mnemonicParsing="false" text="Confirm" />
          </children>
       </HBox>
-      <HBox fx:id="searchBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
+      <HBox fx:id="searchBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0">
          <children>
             <Label text="Name" />
-            <TextField fx:id="searchName" prefHeight="26.0" prefWidth="381.0" promptText="2-256" />
+            <TextField fx:id="searchName" prefHeight="26.0" prefWidth="271.0" promptText="2-256" />
+            <Button fx:id="searchNameButton" mnemonicParsing="false" text="Search" />
             <Label text="Serial No." />
-            <TextField fx:id="searchSerialNo" prefHeight="26.0" prefWidth="178.0" promptText="A-XXX-XXX-XXX" />
-            <Button fx:id="searchConfirm" mnemonicParsing="false" text="Confirm" />
+            <TextField fx:id="searchSerialNumber" prefHeight="26.0" prefWidth="178.0" promptText="A-XXX-XXX-XXX" />
+            <Button fx:id="searchSerialNumberButton" mnemonicParsing="false" text="Search" />
+            <Button fx:id="searchDone" mnemonicParsing="false" text="Done" />
          </children>
       </HBox>
-      <HBox fx:id="menuBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0">
+      <HBox fx:id="saveBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
+         <children>
+            <Button fx:id="saveTSV" mnemonicParsing="false" text="TSV" />
+            <Button fx:id="saveHTML" mnemonicParsing="false" text="HTML" />
+            <Button fx:id="saveJSON" mnemonicParsing="false" text="JSON" />
+            <Button fx:id="saveCancel" mnemonicParsing="false" text="Cancel" />
+         </children>
+      </HBox>
+      <HBox fx:id="menuBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
          <children>
             <Button fx:id="addItem" mnemonicParsing="false" text="Add" />
             <Button fx:id="editItem" mnemonicParsing="false" text="Edit" />
@@ -66,7 +76,7 @@
             <Button fx:id="loadItems" mnemonicParsing="false" text="Load" />
          </children>
       </HBox>
-      <Label alignment="CENTER" layoutX="234.0" layoutY="12.0" prefHeight="33.0" prefWidth="276.0" text="INVENTORY MANAGER" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="247.0" layoutY="8.0" prefHeight="33.0" prefWidth="276.0" text="INVENTORY MANAGER" textAlignment="CENTER">
          <font>
             <Font size="27.0" />
          </font>
