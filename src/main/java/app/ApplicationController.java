@@ -24,6 +24,15 @@ import javafx.stage.FileChooser;
 public class ApplicationController {
 
   @FXML
+  private Button sortName;
+
+  @FXML
+  private Button sortSerialNumber;
+
+  @FXML
+  private Button sortValue;
+
+  @FXML
   private HBox addBar;
 
   @FXML
@@ -90,7 +99,7 @@ public class ApplicationController {
   private static final String SAVE_INVENTORY = "Save Inventory";
 
   @FXML
-  void initialize() {
+  private void initialize() {
     // bind dataTable to inventory
     // set serialNumberColumn to item serialNumbers
     serialNumberColumn.setCellValueFactory(new PropertyValueFactory<>("serialNumber"));
@@ -126,6 +135,11 @@ public class ApplicationController {
       return Double.compare(d1, d2);
     };
     valueColumn.setComparator(valueCompare);
+
+    // set default sort to reverse
+    nameColumn.setComparator(nameColumn.getComparator().reversed());
+    serialNumberColumn.setComparator(serialNumberColumn.getComparator().reversed());
+    valueColumn.setComparator(valueColumn.getComparator().reversed());
 
   }
 
@@ -200,6 +214,23 @@ public class ApplicationController {
       // show menuBar
       menuBar.setVisible(true);
     }
+  }
+
+  //when addCancel is clicked
+  @FXML
+  private void addCancelClicked() {
+    // hide menuBar
+    addBar.setVisible(false);
+    // show addBar
+    menuBar.setVisible(true);
+    // clear addName
+    addName.clear();
+    // clear addSerialNumber
+    addSerialNumber.clear();
+    // clear addValue
+    addValue.clear();
+    // hide errorMessage
+    errorMessage.setVisible(false);
   }
 
   //when editItem is clicked
@@ -295,6 +326,23 @@ public class ApplicationController {
       // show menuBar
       menuBar.setVisible(true);
     }
+  }
+
+  //when editCancel is clicked
+  @FXML
+  private void editCancelClicked() {
+    // hide menuBar
+    editBar.setVisible(false);
+    // show addBar
+    menuBar.setVisible(true);
+    // clear editName
+    editName.clear();
+    // clear editSerialNumber
+    editSerialNumber.clear();
+    // clear editValue
+    editValue.clear();
+    // hide errorMessage
+    errorMessage.setVisible(false);
   }
 
   // when clearItems is clicked
@@ -489,11 +537,6 @@ public class ApplicationController {
     // show sortBar
     sortBar.setVisible(true);
 
-    // set default sort to reverse
-    nameColumn.setComparator(nameColumn.getComparator().reversed());
-    serialNumberColumn.setComparator(serialNumberColumn.getComparator().reversed());
-    valueColumn.setComparator(valueColumn.getComparator().reversed());
-
   }
 
   // when sortDone is clicked
@@ -513,6 +556,17 @@ public class ApplicationController {
     dataTable.getSortOrder().setAll(nameColumn);
     // hide sort triangle
     nameColumn.setSortNode(new Group());
+
+    // if sortName is showing "Name (D)"
+    if (sortName.getText().equals("Name (D)")) {
+      // show "Name (A)"
+      sortName.setText("Name (A)");
+      //else
+    } else {
+      // show "Name (D)"
+      sortName.setText("Name (D)");
+    }
+
   }
 
   @FXML
@@ -523,6 +577,17 @@ public class ApplicationController {
     dataTable.getSortOrder().setAll(serialNumberColumn);
     // hide sort triangle
     serialNumberColumn.setSortNode(new Group());
+
+    // if sortSerialNumber is showing "Serial Number (D)"
+    if (sortSerialNumber.getText().equals("Serial Number (D)")) {
+      // show "Serial Number (A)"
+      sortSerialNumber.setText("Serial Number (A)");
+      //else
+    } else {
+      // show "Serial Number (D)"
+      sortSerialNumber.setText("Serial Number (D)");
+    }
+
   }
 
   @FXML
@@ -533,6 +598,17 @@ public class ApplicationController {
     dataTable.getSortOrder().setAll(valueColumn);
     // hide sort triangle
     valueColumn.setSortNode(new Group());
+
+    // if sortValue is showing "Value (D)"
+    if (sortValue.getText().equals("Value (D)")) {
+      // show "Value (A)"
+      sortValue.setText("Value (A)");
+      //else
+    } else {
+      // show "Value (D)"
+      sortValue.setText("Value (D)");
+    }
+
   }
 
 }

@@ -20,8 +20,15 @@ public class InventoryManagementApplication extends Application {
 
     Scene scene = new Scene(root);
 
+    // set title to "Inventory Manager"
     stage.setTitle("Inventory Manager");
+    // set scene
     stage.setScene(scene);
+    // set minimum width to 770
+    stage.setMinWidth(770);
+    // set minimum height to 480
+    stage.setMinHeight(480);
+    // show stage
     stage.show();
   }
 

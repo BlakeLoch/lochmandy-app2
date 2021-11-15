@@ -1,0 +1,116 @@
+@startuml
+
+class InventoryManagementApplication {
++start(Stage)
++main(String[])
+}
+
+class ApplicationController {
+-Button sortName
+-Button sortSerialNumber
+-Button sortValue
+-HBox addBar
+-HBox editBar
+-HBox menuBar
+-HBox saveBar
+-HBox searchBar
+-HBox sortBar
+-Label errorMessage
+-TextField addName
+-TextField addSerialNumber
+-TextField addValue
+-TextField editName
+-TextField editSerialNumber
+-TextField editValue
+-TextField searchName
+-TextField searchSerialNumber
+-TableView<InventoryItem> dataTable
+-TableColumn<InventoryItem, String> nameColumn
+-TableColumn<InventoryItem, Button> removeColumn
+-TableColumn<InventoryItem, String> serialNumberColumn
+-TableColumn<InventoryItem, String> valueColumn
+-InventoryManager inventory
+-List<String> activeSerialNumbers
+-String SAVE_INVENTORY
+
+-initialize()
+-addItemClicked()
+-addConfirmClicked()
+-addCancelClicked()
+-editItemClicked()
+-editConfirmClicked()
+-editCancelClicked()
+-clearItemsClicked()
+-saveItemsClicked()
+-saveTSVClicked()
+-saveHTMLClicked()
+-saveJSONClicked()
+-saveCancelClicked()
+-loadItemsClicked()
+-searchItemsClicked()
+-searchDoneClicked()
+-searchNameButtonClicked()
+-searchSerialNumberButtonClicked()
+-sortItemsClicked()
+-sortDoneClicked()
+-sortNameClicked()
+-sortSerialNumberClicked()
+-sortValueClicked()
+}
+
+class InventoryManager {
+-List<InventoryItem> inventory
+-String DOTTXT
+-String DOTHTML
+-String DOTJSON
+
++add(InventoryItem)
++remove(InventoryItem)
++clear()
++getInventory()
++saveInventory(File, String)
++loadInventory(File)
++equivalentTo(InventoryManager)
+-saveToTSV(File)
+-saveToHTML(File)
+-saveToJSON(File)
+-loadFromTSV(File)
+-loadFromHTML(File)
+-loadFromJSON(File)
+}
+
+class InventoryItem {
+-String name
+-String serialNumber
+-String value
+
++InventoryItem(String, String, String)
++getName()
++getSerialNumber()
++getValue()
++setName(String)
++setSerialNumber(String)
++setValue(String)
++validateName(String)
++validateSerialNumber(String)
++validateValue(String)
++equivalentTo(InventoryItem)
+}
+
+class ActionButtonTableCell {
+-Button actionButton
+
++ActionButtonTableCell(String, Function<S, S>)
++forTableColumn(String, Function<S, S>)
++getCurrentItem()
++updateItem(Button, boolean)
+}
+
+InventoryManagementApplication <|-- ApplicationController
+InventoryManager *-- InventoryItem
+ApplicationController <|-- InventoryItem
+ApplicationController <|-- InventoryManager
+ApplicationController <|-- ActionButtonTableCell
+
+
+@enduml

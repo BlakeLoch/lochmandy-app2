@@ -16,49 +16,54 @@
 
 <AnchorPane prefHeight="450.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ApplicationController">
    <children>
-      <TableView fx:id="dataTable" layoutX="10.0" layoutY="100.0" prefHeight="340.0" prefWidth="750.0">
+      <TableView fx:id="dataTable" layoutX="10.0" layoutY="100.0" prefHeight="340.0" prefWidth="750.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
         <columns>
-          <TableColumn fx:id="serialNumberColumn" prefWidth="150.0" text="Serial No." />
-          <TableColumn fx:id="nameColumn" prefWidth="450.0" text="Name" />
-            <TableColumn fx:id="valueColumn" prefWidth="120.0" text="Value" />
-            <TableColumn fx:id="removeColumn" prefWidth="30.0" sortable="false" text=" X" />
+          <TableColumn fx:id="serialNumberColumn" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="Serial No." />
+          <TableColumn fx:id="nameColumn" minWidth="450.0" prefWidth="450.0" text="Name" />
+            <TableColumn fx:id="valueColumn" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" resizable="false" text="Value" />
+            <TableColumn fx:id="removeColumn" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" resizable="false" sortable="false" text=" X" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
-      <Label fx:id="errorMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="82.0" prefHeight="19.0" prefWidth="750.0" text="ERROR MESSAGE" textAlignment="CENTER" textFill="RED" visible="false" />
-      <HBox fx:id="addBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
+      <Label fx:id="errorMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="82.0" prefHeight="19.0" prefWidth="750.0" text="ERROR MESSAGE" textAlignment="CENTER" textFill="RED" visible="false" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <HBox fx:id="addBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
             <Label text="Name" />
-            <TextField fx:id="addName" prefHeight="26.0" prefWidth="250.0" promptText="2-256 Characters" />
+            <TextField fx:id="addName" prefHeight="26.0" prefWidth="190.0" promptText="2-256 Characters" />
             <Label text="Serial No." />
             <TextField fx:id="addSerialNumber" prefHeight="26.0" prefWidth="116.0" promptText="A-XXX-XXX-XXX" />
             <Label text="Value" />
             <TextField fx:id="addValue" prefHeight="26.0" prefWidth="142.0" promptText="($) USD" />
-            <Button fx:id="addConfirm" mnemonicParsing="false" onAction="#addConfirmClicked" text="Confirm" />
+            <Button mnemonicParsing="false" onAction="#addConfirmClicked" text="Confirm" />
+            <Button mnemonicParsing="false" onAction="#addCancelClicked" text="Cancel" />
          </children>
       </HBox>
-      <HBox fx:id="editBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
+      <HBox fx:id="editBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
             <Label text="Name" />
-            <TextField fx:id="editName" prefHeight="26.0" prefWidth="250.0" promptText="2-256 Characters" />
+            <TextField fx:id="editName" prefHeight="26.0" prefWidth="190.0" promptText="2-256 Characters" />
             <Label text="Serial No." />
             <TextField fx:id="editSerialNumber" prefHeight="26.0" prefWidth="116.0" promptText="A-XXX-XXX-XXX" />
             <Label text="Value" />
             <TextField fx:id="editValue" prefHeight="26.0" prefWidth="142.0" promptText="($) USD" />
-            <Button fx:id="editConfirm" mnemonicParsing="false" onAction="#editConfirmClicked" text="Confirm" />
+            <Button mnemonicParsing="false" onAction="#editConfirmClicked" text="Confirm" />
+            <Button mnemonicParsing="false" onAction="#editCancelClicked" text="Cancel" />
          </children>
       </HBox>
-      <HBox fx:id="searchBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
+      <HBox fx:id="searchBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
             <Label text="Name" />
             <TextField fx:id="searchName" prefHeight="26.0" prefWidth="263.0" promptText="Name" />
-            <Button fx:id="searchNameButton" mnemonicParsing="false" onAction="#searchNameButtonClicked" text="Search" />
+            <Button mnemonicParsing="false" onAction="#searchNameButtonClicked" text="Search" />
             <Label text="Serial No." />
             <TextField fx:id="searchSerialNumber" prefHeight="26.0" prefWidth="178.0" promptText="Serial No." />
-            <Button fx:id="searchSerialNumberButton" mnemonicParsing="false" onAction="#searchSerialNumberButtonClicked" text="Search" />
-            <Button fx:id="searchDone" mnemonicParsing="false" onAction="#searchDoneClicked" text="Done" />
+            <Button mnemonicParsing="false" onAction="#searchSerialNumberButtonClicked" text="Search" />
+            <Button mnemonicParsing="false" onAction="#searchDoneClicked" text="Done" />
          </children>
       </HBox>
-      <HBox fx:id="saveBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
+      <HBox fx:id="saveBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
             <Button mnemonicParsing="false" onAction="#saveTSVClicked" text="TSV" />
             <Button mnemonicParsing="false" onAction="#saveHTMLClicked" text="HTML" />
@@ -66,15 +71,15 @@
             <Button mnemonicParsing="false" onAction="#saveCancelClicked" text="Cancel" />
          </children>
       </HBox>
-      <HBox fx:id="sortBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
+      <HBox fx:id="sortBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#sortNameClicked" text="Name" />
-            <Button mnemonicParsing="false" onAction="#sortSerialNumberClicked" text="Serial Number" />
-            <Button mnemonicParsing="false" onAction="#sortValueClicked" text="Value" />
+            <Button fx:id="sortName" mnemonicParsing="false" onAction="#sortNameClicked" text="Name (A)" />
+            <Button fx:id="sortSerialNumber" mnemonicParsing="false" onAction="#sortSerialNumberClicked" text="Serial Number (A)" />
+            <Button fx:id="sortValue" mnemonicParsing="false" onAction="#sortValueClicked" text="Value (A)" />
             <Button mnemonicParsing="false" onAction="#sortDoneClicked" text="Done" />
          </children>
       </HBox>
-      <HBox fx:id="menuBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0">
+      <HBox fx:id="menuBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
             <Button mnemonicParsing="false" onAction="#addItemClicked" text="Add" />
             <Button mnemonicParsing="false" onAction="#editItemClicked" text="Edit" />
@@ -85,7 +90,7 @@
             <Button mnemonicParsing="false" onAction="#loadItemsClicked" text="Load" />
          </children>
       </HBox>
-      <Label alignment="CENTER" layoutX="247.0" layoutY="8.0" prefHeight="33.0" prefWidth="276.0" text="INVENTORY MANAGER" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="247.0" layoutY="8.0" prefHeight="33.0" prefWidth="276.0" text="INVENTORY MANAGER" textAlignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <font>
             <Font size="27.0" />
          </font>
