@@ -24,56 +24,65 @@
             <TableColumn fx:id="removeColumn" prefWidth="30.0" sortable="false" text=" X" />
         </columns>
       </TableView>
-      <Label fx:id="errorMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="81.0" prefHeight="19.0" prefWidth="128.0" text="ERROR MESSAGE" textAlignment="CENTER" textFill="RED" visible="false" />
+      <Label fx:id="errorMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="82.0" prefHeight="19.0" prefWidth="750.0" text="ERROR MESSAGE" textAlignment="CENTER" textFill="RED" visible="false" />
       <HBox fx:id="addBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
          <children>
             <Label text="Name" />
-            <TextField fx:id="addName" prefHeight="26.0" prefWidth="250.0" promptText="2-256" />
+            <TextField fx:id="addName" prefHeight="26.0" prefWidth="250.0" promptText="2-256 Characters" />
             <Label text="Serial No." />
             <TextField fx:id="addSerialNumber" prefHeight="26.0" prefWidth="116.0" promptText="A-XXX-XXX-XXX" />
             <Label text="Value" />
             <TextField fx:id="addValue" prefHeight="26.0" prefWidth="142.0" promptText="($) USD" />
-            <Button fx:id="addConfirm" mnemonicParsing="false" text="Confirm" />
+            <Button fx:id="addConfirm" mnemonicParsing="false" onAction="#addConfirmClicked" text="Confirm" />
          </children>
       </HBox>
       <HBox fx:id="editBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
          <children>
             <Label text="Name" />
-            <TextField fx:id="editName" prefHeight="26.0" prefWidth="250.0" promptText="2-256" />
+            <TextField fx:id="editName" prefHeight="26.0" prefWidth="250.0" promptText="2-256 Characters" />
             <Label text="Serial No." />
             <TextField fx:id="editSerialNumber" prefHeight="26.0" prefWidth="116.0" promptText="A-XXX-XXX-XXX" />
             <Label text="Value" />
             <TextField fx:id="editValue" prefHeight="26.0" prefWidth="142.0" promptText="($) USD" />
-            <Button fx:id="editConfirm" mnemonicParsing="false" text="Confirm" />
+            <Button fx:id="editConfirm" mnemonicParsing="false" onAction="#editConfirmClicked" text="Confirm" />
          </children>
       </HBox>
-      <HBox fx:id="searchBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0">
+      <HBox fx:id="searchBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
          <children>
             <Label text="Name" />
-            <TextField fx:id="searchName" prefHeight="26.0" prefWidth="271.0" promptText="2-256" />
-            <Button fx:id="searchNameButton" mnemonicParsing="false" text="Search" />
+            <TextField fx:id="searchName" prefHeight="26.0" prefWidth="263.0" promptText="Name" />
+            <Button fx:id="searchNameButton" mnemonicParsing="false" onAction="#searchNameButtonClicked" text="Search" />
             <Label text="Serial No." />
-            <TextField fx:id="searchSerialNumber" prefHeight="26.0" prefWidth="178.0" promptText="A-XXX-XXX-XXX" />
-            <Button fx:id="searchSerialNumberButton" mnemonicParsing="false" text="Search" />
-            <Button fx:id="searchDone" mnemonicParsing="false" text="Done" />
+            <TextField fx:id="searchSerialNumber" prefHeight="26.0" prefWidth="178.0" promptText="Serial No." />
+            <Button fx:id="searchSerialNumberButton" mnemonicParsing="false" onAction="#searchSerialNumberButtonClicked" text="Search" />
+            <Button fx:id="searchDone" mnemonicParsing="false" onAction="#searchDoneClicked" text="Done" />
          </children>
       </HBox>
       <HBox fx:id="saveBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
          <children>
-            <Button fx:id="saveTSV" mnemonicParsing="false" text="TSV" />
-            <Button fx:id="saveHTML" mnemonicParsing="false" text="HTML" />
-            <Button fx:id="saveJSON" mnemonicParsing="false" text="JSON" />
-            <Button fx:id="saveCancel" mnemonicParsing="false" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#saveTSVClicked" text="TSV" />
+            <Button mnemonicParsing="false" onAction="#saveHTMLClicked" text="HTML" />
+            <Button mnemonicParsing="false" onAction="#saveJSONClicked" text="JSON" />
+            <Button mnemonicParsing="false" onAction="#saveCancelClicked" text="Cancel" />
          </children>
       </HBox>
-      <HBox fx:id="menuBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
+      <HBox fx:id="sortBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0" visible="false">
          <children>
-            <Button fx:id="addItem" mnemonicParsing="false" text="Add" />
-            <Button fx:id="editItem" mnemonicParsing="false" text="Edit" />
-            <Button fx:id="clearItems" mnemonicParsing="false" text="Clear" />
-            <Button fx:id="searchItems" mnemonicParsing="false" text="Search" />
-            <Button fx:id="saveItems" mnemonicParsing="false" text="Save" />
-            <Button fx:id="loadItems" mnemonicParsing="false" text="Load" />
+            <Button mnemonicParsing="false" onAction="#sortNameClicked" text="Name" />
+            <Button mnemonicParsing="false" onAction="#sortSerialNumberClicked" text="Serial Number" />
+            <Button mnemonicParsing="false" onAction="#sortValueClicked" text="Value" />
+            <Button mnemonicParsing="false" onAction="#sortDoneClicked" text="Done" />
+         </children>
+      </HBox>
+      <HBox fx:id="menuBar" alignment="CENTER" layoutX="10.0" layoutY="47.0" prefHeight="35.0" prefWidth="750.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#addItemClicked" text="Add" />
+            <Button mnemonicParsing="false" onAction="#editItemClicked" text="Edit" />
+            <Button mnemonicParsing="false" onAction="#clearItemsClicked" text="Clear" />
+            <Button mnemonicParsing="false" onAction="#searchItemsClicked" text="Search" />
+            <Button mnemonicParsing="false" onAction="#sortItemsClicked" text="Sort" />
+            <Button mnemonicParsing="false" onAction="#saveItemsClicked" text="Save" />
+            <Button mnemonicParsing="false" onAction="#loadItemsClicked" text="Load" />
          </children>
       </HBox>
       <Label alignment="CENTER" layoutX="247.0" layoutY="8.0" prefHeight="33.0" prefWidth="276.0" text="INVENTORY MANAGER" textAlignment="CENTER">

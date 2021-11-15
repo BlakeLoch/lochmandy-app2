@@ -1,0 +1,4 @@
+Serial Number	Name	Value
+A-XXX-XXX-XXX	Name 1	$100.00
+B-YYY-YYY-YYY	Name 2	$200.00
+C-ZZZ-ZZZ-ZZZ	Name 3	$50.00

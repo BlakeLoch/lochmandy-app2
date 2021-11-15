@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Name 1",
+    "serialNumber": "A-XXX-XXX-XXX",
+    "value": "$100.00"
+  },
+  {
+    "name": "Name 2",
+    "serialNumber": "B-YYY-YYY-YYY",
+    "value": "$200.00"
+  },
+  {
+    "name": "Name 3",
+    "serialNumber": "C-ZZZ-ZZZ-ZZZ",
+    "value": "$50.00"
+  }
+]
