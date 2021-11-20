@@ -20,7 +20,7 @@ Add Item:
 Remove Item:
 1. Click on the “X” in the last column of the item to remove
 
-Edit an Item:
+Edit Item:
 1. Click on the Item
 2. Click "Edit"
 3. Enter new Name, Serial Number, and/or Value
