@@ -31,7 +31,7 @@ Edit an Item:
 
 *Inventory Controls*
 
-Clear List of Items:
+Clear Inventory:
 1. Click on “Clear”
 
 Search Inventory by Name/Serial Number
