@@ -26,7 +26,7 @@ Edit an Item:
 3. Enter new Name, Serial Number, and/or Value
    1. *Name must be in the correct format (2-256 Characters)*
    2. *Serial Number must be in the correct format (Format: A-XXX-XXX-XXX, Unique)*
-   3. *Value must be in the correct format (Format: $~D~.DD (US Currency))*
+   3. *Value must be in the correct format (Format: $\~D~.DD (US Currency))*
 4. Click “Confirm”
 
 *Inventory Controls*
