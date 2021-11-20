@@ -210,13 +210,13 @@ class InventoryManagerTest {
     // select test file
     File testFile = new File(testPath + File.separator + "");
     if (fileFormat.equals("TSV")) {
-      testFile = new File(testPath + File.separator + "saveInventoryTSVTest.txt");
+      testFile = new File(testPath + File.separator + "loadInventoryTSVTest.txt");
     }
     if (fileFormat.equals("HTML")) {
-      testFile = new File(testPath + File.separator + "saveInventoryHTMLTest.html");
+      testFile = new File(testPath + File.separator + "loadInventoryHTMLTest.html");
     }
     if (fileFormat.equals("JSON")) {
-      testFile = new File(testPath + File.separator + "saveInventoryJSONTest.json");
+      testFile = new File(testPath + File.separator + "loadInventoryJSONTest.json");
     }
     // expected = create InventoryManager object
     InventoryManager expected = new InventoryManager();
