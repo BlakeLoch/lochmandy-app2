@@ -14,9 +14,14 @@ import javafx.stage.Stage;
 
 public class InventoryManagementApplication extends Application {
 
+  public static void main(String[] args) {
+    launch(args);
+  }
+
   @Override
   public void start(Stage stage) throws Exception {
-    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Application.fxml")));
+    Parent root = FXMLLoader.load(
+        Objects.requireNonNull(getClass().getResource("Application.fxml")));
 
     Scene scene = new Scene(root);
 
@@ -30,10 +35,6 @@ public class InventoryManagementApplication extends Application {
     stage.setMinHeight(480);
     // show stage
     stage.show();
-  }
-
-  public static void main(String[] args) {
-    launch(args);
   }
 
 }

@@ -18,10 +18,10 @@ import java.util.Scanner;
 
 public class InventoryManager {
 
-  private final List<InventoryItem> inventory = new ArrayList<>();
   private static final String DOTTXT = ".txt";
   private static final String DOTHTML = ".html";
   private static final String DOTJSON = ".json";
+  private final List<InventoryItem> inventory = new ArrayList<>();
 
   public void add(InventoryItem item) {
     // add item to inventory
@@ -47,7 +47,7 @@ public class InventoryManager {
     // if fileFormat = TSV
     if (fileFormat.equals("TSV")) {
       // save inventory as TSV
-    saveToTSV(outputFile);
+      saveToTSV(outputFile);
     }
     // if fileFormat = HTML
     if (fileFormat.equals("HTML")) {
@@ -66,7 +66,7 @@ public class InventoryManager {
     String filePath = outputFile.getAbsolutePath();
     // if filePath does not end with .txt
     if (!filePath.endsWith(DOTTXT)) {
-    // outputFile = filePath + .txt
+      // outputFile = filePath + .txt
       outputFile = new File(filePath + DOTTXT);
     }
     // create fileWriter in try with resources
@@ -76,7 +76,8 @@ public class InventoryManager {
       // for each item
       for (InventoryItem item : inventory) {
         // write serialNumber + "\t" + name + "\t" + value+\n
-        output.write(item.getSerialNumber() + "\t" + item.getName() + "\t" + item.getValue() + "\n");
+        output.write(
+            item.getSerialNumber() + "\t" + item.getName() + "\t" + item.getValue() + "\n");
       }
     }
     // catch error
@@ -90,25 +91,28 @@ public class InventoryManager {
     String filePath = outputFile.getAbsolutePath();
     // if filePath does not end with .html
     if (!filePath.endsWith(DOTHTML)) {
-    // outputFile = filePath + .html
+      // outputFile = filePath + .html
       outputFile = new File(filePath + DOTHTML);
     }
     // create fileWriter in try with resources
     try (FileWriter output = new FileWriter(outputFile)) {
-    // write "<table>\n\t<tr>\n\t\t<th>Serial Number</th>\n\t\t<th>Name</th>\n\t\t<th>Value</th>\n\t</tr>\n"
-      output.write( "<table>\n\t<tr>\n\t\t<th>Serial Number</th>\n\t\t<th>Name</th>\n\t\t<th>Value</th>\n\t</tr>\n");
-    // for each item
+      // write "<table>\n\t<tr>\n\t\t<th>Serial Number</th>\n\t\t<th>Name</th>\n\t\t<th>Value</th>\n\t</tr>\n"
+      output.write(
+          "<table>\n\t<tr>\n\t\t<th>Serial Number</th>\n\t\t<th>Name</th>\n\t\t<th>Value</th>\n\t</tr>\n");
+      // for each item
       for (InventoryItem item : inventory) {
-    // write "\t<tr>\n\t\t<th>"+serialNumber+"</th>\n\t\t<th>"+name+"</th>\n\t\t<th>"+value+"</th>\n\t</tr>\n"
-        output.write("\t<tr>\n\t\t<td>"+item.getSerialNumber()+"</td>\n\t\t<td>"+item.getName()+"</td>\n\t\t<td>"+item.getValue()+"</td>\n\t</tr>\n");
-        }
-    // write "</table>"
+        // write "\t<tr>\n\t\t<th>"+serialNumber+"</th>\n\t\t<th>"+name+"</th>\n\t\t<th>"+value+"</th>\n\t</tr>\n"
+        output.write(
+            "\t<tr>\n\t\t<td>" + item.getSerialNumber() + "</td>\n\t\t<td>" + item.getName()
+                + "</td>\n\t\t<td>" + item.getValue() + "</td>\n\t</tr>\n");
+      }
+      // write "</table>"
       output.write("</table>");
-      }
+    }
     // catch error
-       catch (IOException e) {
-        e.printStackTrace();
-      }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   private void saveToJSON(File outputFile) {
@@ -116,7 +120,7 @@ public class InventoryManager {
     String filePath = outputFile.getAbsolutePath();
     // if filePath does not end with .json
     if (!filePath.endsWith(DOTJSON)) {
-    // outputFile = filePath + .json
+      // outputFile = filePath + .json
       outputFile = new File(filePath + DOTJSON);
     }
     // create fileWriter in try with resources
@@ -222,7 +226,8 @@ public class InventoryManager {
       // create new gson object
       Gson gson = new Gson();
       // inventory = inputFileString from json
-      inventory.addAll(gson.fromJson(data, new TypeToken<List<InventoryItem>>(){}.getType()));
+      inventory.addAll(gson.fromJson(data, new TypeToken<List<InventoryItem>>() {
+      }.getType()));
     }
     // catch error
     catch (IOException e) {

@@ -23,80 +23,55 @@ import javafx.stage.FileChooser;
 
 public class ApplicationController {
 
+  private static final String SAVE_INVENTORY = "Save Inventory";
+  private final InventoryManager inventory = new InventoryManager();
+  private final List<String> activeSerialNumbers = new ArrayList<>();
   @FXML
   private Button sortName;
-
   @FXML
   private Button sortSerialNumber;
-
   @FXML
   private Button sortValue;
-
   @FXML
   private HBox addBar;
-
   @FXML
   private HBox editBar;
-
   @FXML
   private HBox menuBar;
-
   @FXML
   private HBox saveBar;
-
   @FXML
   private HBox searchBar;
-
   @FXML
   private HBox sortBar;
-
   @FXML
   private Label errorMessage;
-
   @FXML
   private TextField addName;
-
   @FXML
   private TextField addSerialNumber;
-
   @FXML
   private TextField addValue;
-
   @FXML
   private TextField editName;
-
   @FXML
   private TextField editSerialNumber;
-
   @FXML
   private TextField editValue;
-
   @FXML
   private TextField searchName;
-
   @FXML
   private TextField searchSerialNumber;
-
   @FXML
   private TableView<InventoryItem> dataTable;
-
   @FXML
   private TableColumn<InventoryItem, String> nameColumn;
-
   @FXML
   private TableColumn<InventoryItem, Button> removeColumn;
-
   @FXML
   private TableColumn<InventoryItem, String> serialNumberColumn;
-
   @FXML
   private TableColumn<InventoryItem, String> valueColumn;
-
-  private final InventoryManager inventory = new InventoryManager();
-
-  private final List<String> activeSerialNumbers = new ArrayList<>();
-
-  private static final String SAVE_INVENTORY = "Save Inventory";
 
   @FXML
   private void initialize() {
@@ -284,7 +259,8 @@ public class ApplicationController {
       errorMessage.setVisible(true);
     }
     // if activeSerialNumbers contains serialNumber
-    else if (activeSerialNumbers.contains(serialNumber) && !item.getSerialNumber().equals(serialNumber)) {
+    else if (activeSerialNumbers.contains(serialNumber) && !item.getSerialNumber()
+        .equals(serialNumber)) {
       // set errorMessage text to "Invalid Serial Number: Serial Number Must Be Unique"
       errorMessage.setText("Invalid Serial Number: Serial Number Must Be Unique");
       // show errorMessage
@@ -388,21 +364,21 @@ public class ApplicationController {
   // when saveHTML is clicked
   @FXML
   private void saveHTMLClicked() {
-      // create a fileChooser
-      FileChooser fileChooser = new FileChooser();
-      // set title to "Save Inventory"
-      fileChooser.setTitle(SAVE_INVENTORY);
-      // open fileChooser
-      File outputFile = fileChooser.showSaveDialog(dataTable.getScene().getWindow());
-      // if file is selected
-      if (outputFile != null) {
-        // inventory.saveInventory(outputFile, HTML)
-        inventory.saveInventory(outputFile, "HTML");
-        // hide saveBar
-        saveBar.setVisible(false);
-        // show menuBar
-        menuBar.setVisible(true);
-      }
+    // create a fileChooser
+    FileChooser fileChooser = new FileChooser();
+    // set title to "Save Inventory"
+    fileChooser.setTitle(SAVE_INVENTORY);
+    // open fileChooser
+    File outputFile = fileChooser.showSaveDialog(dataTable.getScene().getWindow());
+    // if file is selected
+    if (outputFile != null) {
+      // inventory.saveInventory(outputFile, HTML)
+      inventory.saveInventory(outputFile, "HTML");
+      // hide saveBar
+      saveBar.setVisible(false);
+      // show menuBar
+      menuBar.setVisible(true);
+    }
   }
 
   // when saveJSON is clicked
@@ -500,7 +476,8 @@ public class ApplicationController {
     // for each item
     for (InventoryItem item : inventory.getInventory()) {
       // if item.getName() contains or equals name
-      if (item.getName().toLowerCase().contains(name.toLowerCase()) || item.getName().equalsIgnoreCase(name)) {
+      if (item.getName().toLowerCase().contains(name.toLowerCase()) || item.getName()
+          .equalsIgnoreCase(name)) {
         // add item to filteredList
         filteredList.add(item);
       }
@@ -526,7 +503,7 @@ public class ApplicationController {
       }
     }
     // populate dataTable with filteredList
-      dataTable.getItems().setAll(filteredList);
+    dataTable.getItems().setAll(filteredList);
   }
 
   // when sortItems is clicked

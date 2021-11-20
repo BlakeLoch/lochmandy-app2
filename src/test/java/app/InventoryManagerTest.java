@@ -5,7 +5,9 @@
 
 package app;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +20,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class InventoryManagerTest {
 
+  String testPath = "src" + File.separator + "test" + File.separator + "files";
+
   private String readFile(File file) {
     // read file as a string
     String data = "";
@@ -29,8 +33,6 @@ class InventoryManagerTest {
     // return the string
     return data;
   }
-
-  String testPath = "src" + File.separator + "test" + File.separator + "files";
 
   @Test
   void add() {
@@ -274,6 +276,35 @@ class InventoryManagerTest {
     inventory2.add(item4);
     // assert false if lists are not equivalent
     assertFalse(inventory1.equivalentTo(inventory2));
+  }
+
+  @Test
+  void canStore1024Items() {
+    // inventory1 = new InventoryManager
+    InventoryManager inventory1 = new InventoryManager();
+    // loop from 1 to 1024
+    for (int i = 1; i < 1025; i++) {
+      //name = Item i
+      String name = "Item " + i;
+      // Convert i into 9-digit number string
+      String serial = String.format("%09d", i);
+      // serialNumber = A-000-000-00i
+      String serialNumber = "A-" + serial.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "$1-$2-$3");
+      // value = $i.00;
+      String value = "$" + i + ".00";
+      // Add new item(name, serialNumber, value) to inventory1
+      inventory1.add(new InventoryItem(name, serialNumber, value));
+    }
+    // Create testFile
+    File testFile = new File(testPath + File.separator + "storageTest");
+    // Save inventory1 to testFile
+    inventory1.saveInventory(testFile, "TSV");
+    // inventory1 = new InventoryManager
+    InventoryManager inventory2 = new InventoryManager();
+    // Load contents of testFile to inventory2
+    inventory2.loadInventory(testFile);
+    // Check if inventory1 = inventory2
+    assertTrue(inventory1.equivalentTo(inventory2));
   }
 
 }

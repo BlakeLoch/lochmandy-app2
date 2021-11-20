@@ -12,42 +12,11 @@ public class InventoryItem {
   private String value;
 
 
-
   public InventoryItem(String name, String serialNumber, String value) {
     // set name to name
     this.name = name;
     // set serialNumber to serialNumber
     this.serialNumber = serialNumber;
-    // set value to value
-    this.value = value;
-  }
-
-  public String getName() {
-    // return name
-    return name;
-  }
-
-  public String getSerialNumber() {
-    //  return serialNumber
-    return serialNumber;
-  }
-
-  public String getValue() {
-    //  return value
-    return value;
-  }
-
-  public void setName(String name) {
-    // set name to name
-    this.name = name;
-  }
-
-  public void setSerialNumber(String serialNumber) {
-    // set serialNumber to serialNumber
-    this.serialNumber = serialNumber;
-  }
-
-  public void setValue(String value) {
     // set value to value
     this.value = value;
   }
@@ -59,7 +28,8 @@ public class InventoryItem {
 
   public static boolean validateSerialNumber(String serialNumber) {
     // return true if serialNumber is in the format of A-XXX-XXX-XXX
-    return serialNumber.matches("^[a-zA-Z]-[a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]-[a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]-[a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]$");
+    return serialNumber.matches(
+        "^[a-zA-Z]-[a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]-[a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]-[a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]$");
   }
 
   public static boolean validateValue(String value) {
@@ -67,9 +37,40 @@ public class InventoryItem {
     return value.matches("\\$[0-9]*\\.[0-9]{2}");
   }
 
+  public String getName() {
+    // return name
+    return name;
+  }
+
+  public void setName(String name) {
+    // set name to name
+    this.name = name;
+  }
+
+  public String getSerialNumber() {
+    //  return serialNumber
+    return serialNumber;
+  }
+
+  public void setSerialNumber(String serialNumber) {
+    // set serialNumber to serialNumber
+    this.serialNumber = serialNumber;
+  }
+
+  public String getValue() {
+    //  return value
+    return value;
+  }
+
+  public void setValue(String value) {
+    // set value to value
+    this.value = value;
+  }
+
   public boolean equivalentTo(InventoryItem item) {
     // return true if this.name = item.name and this.serialNumber = item.serialNumber and this.value = item.value
-    return name.equals(item.getName()) && serialNumber.equals(item.getSerialNumber()) && value.equals(item.getValue());
+    return name.equals(item.getName()) && serialNumber.equals(item.getSerialNumber())
+        && value.equals(item.getValue());
   }
 
 }
