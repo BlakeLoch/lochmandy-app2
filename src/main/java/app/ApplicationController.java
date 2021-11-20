@@ -21,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 
+@SuppressWarnings("unchecked")
 public class ApplicationController {
 
   private static final String SAVE_INVENTORY = "Save Inventory";
@@ -103,12 +104,15 @@ public class ApplicationController {
       activeSerialNumbers.add(item.getSerialNumber());
     }
 
-    // set custom comparator for valueColumn
+    // create custom comparator for valueColumn
     Comparator<String> valueCompare = (s1, s2) -> {
+      //parse values as double and ignore $
       double d1 = Double.parseDouble(s1.substring(s1.indexOf("$") + 1));
       double d2 = Double.parseDouble(s2.substring(s2.indexOf("$") + 1));
+      // compare the doubles
       return Double.compare(d1, d2);
     };
+    // set custom comparator for valueColumn
     valueColumn.setComparator(valueCompare);
 
     // set default sort to reverse
@@ -194,9 +198,9 @@ public class ApplicationController {
   //when addCancel is clicked
   @FXML
   private void addCancelClicked() {
-    // hide menuBar
+    // hide addBar
     addBar.setVisible(false);
-    // show addBar
+    // show menuBar
     menuBar.setVisible(true);
     // clear addName
     addName.clear();
@@ -216,12 +220,13 @@ public class ApplicationController {
     // show editBar
     editBar.setVisible(true);
 
+    //get selected item
     InventoryItem item = dataTable.getSelectionModel().getSelectedItem();
-    // set editName to selected/highlighted item.getName()
+    // set editName to selected item.getName()
     editName.setText(item.getName());
-    // set editSerialNumber to selected/highlighted item.getSerialNumber()
+    // set editSerialNumber to selected item.getSerialNumber()
     editSerialNumber.setText(item.getSerialNumber());
-    // set editValue to selected/highlighted item.getValue()
+    // set editValue to selected item.getValue()
     editValue.setText(item.getValue());
   }
 
