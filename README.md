@@ -6,7 +6,7 @@ Add Item:
 1. Click “Add”
 2. Enter Name in text field (2-256 Characters)
 3. Enter Serial Number in text field (Format: A-XXX-XXX-XXX, Unique)
-4. Enter Value in text field (Format: $~D~.DD (US Currency))
+4. Enter Value in text field (Format: $\~D~.DD (US Currency))
 5. Click “Confirm”
 
 *Note:*
