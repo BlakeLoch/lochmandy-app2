@@ -524,9 +524,9 @@ public class ApplicationController {
   // when sortDone is clicked
   @FXML
   private void sortDoneClicked() {
-    // hide menuBar
+    // show menuBar
     menuBar.setVisible(true);
-    // show sortBar
+    // hide sortBar
     sortBar.setVisible(false);
   }
 
